@@ -11,7 +11,7 @@ import java.util.Date;
  */
 public class LongestChars {
     public static void main(String args[]) {
-        System.out.print(longestCharsNumber2("abaac"));
+        System.out.print(longestLengthNumber("aabbcbaac"));
     }
 
     public static int longestCharsNumber(String s) {
@@ -56,13 +56,37 @@ public class LongestChars {
                 maxLength = maxLength < aftLocation - proLocation + 1 ? aftLocation - proLocation + 1 : maxLength;
                 proLocation = c[a - ' '] + 1;
             }
+            System.out.println("i=" + i + "  pro=" + proLocation + "  aft=" + aftLocation + "  c[" + a + "]=" + c[a - ' '] + " " + " max=" + maxLength);
             c[a - ' '] = i + 1;
-            aftLocation = c[a - ' '];
         }
         maxLength = maxLength < aftLocation - proLocation + 1 ? aftLocation - proLocation + 1 : maxLength;
         long t2 = new Date().getTime();
         System.out.print("消耗时间:" + (t2 - t1));
         return maxLength;
+    }
+
+
+    public static int longestLengthNumber(String s) {
+
+        long t1 = System.currentTimeMillis();
+        int length;
+        if ((length = s.length()) < 2) {
+            return length;
+        }
+        int max = 0;
+        int proLocation = -1;
+        int array[] = new int[128];
+        char ch;
+        for (int i = 0; i < length; i++) {
+            ch = s.charAt(i);
+            proLocation = proLocation > array[ch] ? proLocation : array[ch];
+            max = i - proLocation > max ? i - proLocation : max;
+            array[ch] = i;
+        }
+        long t2 = System.currentTimeMillis();
+
+        System.out.println("\n消耗时间:" + (t2 - t1));
+        return max;
     }
 
 }
