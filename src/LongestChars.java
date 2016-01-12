@@ -1,4 +1,3 @@
-import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -11,7 +10,7 @@ import java.util.Date;
  */
 public class LongestChars {
     public static void main(String args[]) {
-        System.out.print(longestLengthNumber("aabbcbaac"));
+        System.out.print(longestLengthNumber("aa"));
     }
 
     public static int longestCharsNumber(String s) {
@@ -74,16 +73,19 @@ public class LongestChars {
             return length;
         }
         int max = 0;
-        int proLocation = -1;
+        int proLocation = 1;
         int array[] = new int[128];
         char ch;
-        for (int i = 0; i < length; i++) {
+        int i = 0;
+        for (; i < length; i++) {
             ch = s.charAt(i);
-            proLocation = proLocation > array[ch] ? proLocation : array[ch];
+            if(array[ch]>=proLocation)
+            proLocation = proLocation > array[ch- ' '] ? proLocation : array[ch-' '];
             max = i - proLocation > max ? i - proLocation : max;
-            array[ch] = i;
+            array[ch-' '] = i;
         }
         long t2 = System.currentTimeMillis();
+        max = i - proLocation > max ? i - proLocation : max;
 
         System.out.println("\n消耗时间:" + (t2 - t1));
         return max;
