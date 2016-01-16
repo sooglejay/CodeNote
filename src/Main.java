@@ -6,19 +6,9 @@ import java.util.Queue;
 
 public class Main {
     public static void main(String[] args) {
-        char c = '#';
-        TreeNode node = new TreeNode(3);
-        TreeNode left1 = new TreeNode(9);
-        TreeNode right1 = new TreeNode(20);
-        TreeNode right1_l = new TreeNode(15);
-        TreeNode right1_r = new TreeNode(7);
-        node.left = left1;
-        node.right = right1;
-        right1.left = right1_l;
-        right1.right = right1_r;
 
-
-        System.out.print(levelOrder(node).toString());
+        int[] aa = new int[]{0, 0, 0, 0};
+        System.out.print(fourSum(aa, 0));
 //        ReverseLink.main(args);
     }
 
@@ -68,4 +58,60 @@ public class Main {
         return list;
     }
 
+
+    public static List<List<Integer>> fourSum(int[] nums, int target) {
+
+        List<List<Integer>> list = new ArrayList<>();
+
+        //first sort
+        for (int j = 1; j < nums.length; j++) {
+            int key = nums[j];
+            int i = j - 1;
+            while (i >= 0 && nums[i] > key) {
+                nums[i + 1] = nums[i];
+                i--;
+            }
+            nums[i + 1] = key;
+        }
+
+        String numberStr = "";
+        for (int i = 0; i < nums.length - 3; i++) {
+            for (int j = i + 1; j < nums.length - 2; j++) {
+                int k = j + 1;
+                int p = nums.length - 1;
+                while (k < p) {
+                    int sum = nums[i] + nums[j] + nums[k] + nums[p];
+                    if (sum == target) {
+                        String tempStr = nums[i] + "" + nums[j] + "" + nums[k] + "" + nums[p];
+                        if (i == 0) {
+                            numberStr = tempStr;
+                        } else if (numberStr.equals(tempStr)) {
+                            continue;
+                        }
+                        List<Integer> sonList = new ArrayList<>();
+
+                        sonList.add(nums[i]);
+                        sonList.add(nums[j]);
+                        sonList.add(nums[k]);
+                        sonList.add(nums[p]);
+                        list.add(sonList);
+                        do {
+                            ++k;
+                        }
+                        while (k < p && nums[k] == nums[k - 1]);
+                        do {
+                            --p;
+                        }
+                        while (k < p && nums[p] == nums[p + 1]);
+                    } else if (sum < target)
+                        k++;  //we can do this operation because of we sort the array at the beginnin
+                    else
+                        p--;
+                }
+
+            }
+        }
+        return list;
+
+    }
 }
