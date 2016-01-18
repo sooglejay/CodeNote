@@ -7,6 +7,12 @@ public class RemoveValue {
         System.out.print(removeElement(new int[]{4, 5}, 4));
     }
 
+    /**
+     * 删除数组中的特定值,使用变量newLength来计算新数组的长度
+     * @param nums
+     * @param val
+     * @return
+     */
     public static int removeElement(int[] nums, int val) {
         int length;
         if ((length = nums.length) < 1) {

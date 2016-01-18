@@ -8,6 +8,11 @@ public class RemoveDuplicates {
 
     }
 
+    /***
+     * 使用两个下标,i,j,i做遍历,j做新数组长度
+     * @param nums
+     * @return
+     */
     public static int removeDuplicates(int[] nums) {
         int n;
         if ((n = nums.length) < 1) {

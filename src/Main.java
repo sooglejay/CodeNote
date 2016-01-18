@@ -7,8 +7,11 @@ import java.util.Queue;
 public class Main {
     public static void main(String[] args) {
 
-        int[] aa = new int[]{0, 0, 0, 0};
-        System.out.print(fourSum(aa, 0));
+//        int[] aa = new int[]{3, 1, 1, 2};
+     int nums[]=new int[]{2,0,0,0,1,0,0,1};
+
+        ReverseLink.main(args);
+//        System.out.print(fourSum(aa, 0));
 //        ReverseLink.main(args);
     }
 
@@ -83,9 +86,10 @@ public class Main {
                     int sum = nums[i] + nums[j] + nums[k] + nums[p];
                     if (sum == target) {
                         String tempStr = nums[i] + "" + nums[j] + "" + nums[k] + "" + nums[p];
-                        if (i == 0) {
+                        if (numberStr.equals("")) {
                             numberStr = tempStr;
                         } else if (numberStr.equals(tempStr)) {
+                            k++;
                             continue;
                         }
                         List<Integer> sonList = new ArrayList<>();
