@@ -3,13 +3,13 @@
  */
 public class RemoveDuplicates {
     public static void main(String[] args) {
-        System.out.print(removeDuplicates(new int[]{1, 1, 1, 1, 1, 1, 1, 2, 2, 3, 3, 3, 4
-        }));
+        System.out.print(isAnagram("aabcdeaaa","aa"));
 
     }
 
     /***
      * 使用两个下标,i,j,i做遍历,j做新数组长度
+     *
      * @param nums
      * @return
      */
@@ -32,5 +32,25 @@ public class RemoveDuplicates {
             }
         }
         return j + 1;
+    }
+
+    public static boolean isAnagram(String s, String t) {
+
+        if (s.length() != t.length()) return false;
+        int[] table = new int[26];
+        Print.println("array :S\n");
+
+        for (char c : s.toCharArray()) {
+            table[c - 'a']++;
+            Print.println(c+"");
+        }
+           Print.println("array :T\n");
+           for (char c : t.toCharArray()) {
+               Print.println(c+"");
+               table[c - 'a']--;
+               if (table[c - 'a'] < 0) return false;
+           }
+           return true;
+
     }
 }

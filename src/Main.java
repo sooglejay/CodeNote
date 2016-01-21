@@ -10,8 +10,7 @@ public class Main {
 //        int[] aa = new int[]{3, 1, 1, 2};
      int nums[]=new int[]{2,0,0,0,1,0,0,1};
 
-        ReverseLink.main(args);
-//        System.out.print(fourSum(aa, 0));
+        RemoveDuplicates.main(args);
 //        ReverseLink.main(args);
     }
 
