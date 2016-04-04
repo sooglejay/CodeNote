@@ -1,3 +1,4 @@
+import leetCode.Print;
 import org.omg.CORBA.PUBLIC_MEMBER;
 
 /**
@@ -8,8 +9,13 @@ import org.omg.CORBA.PUBLIC_MEMBER;
 public class Sort {
     public static void main(String[] args) {
 
-        int a[] = new int[]{9, 1, 2, 3, 1, 5, 6};
-//        Print.print(insertSort(a));
+        int a[] = new int[]{1,2,3,5,8,9,6,4,7};
+        Print.print(a);
+        heapSort(a);
+        Print.print("\n  to see : \n");
+        Print.print(a);
+
+//        leetCode.Print.print(insertSort(a));
 //        int a[8] = {3,1,5,7,2,4,9,6};
 
     }
@@ -51,13 +57,73 @@ public class Sort {
                 a[i + 1] = a[i];//把后面的数字,若满足条件就继续向前移动一位
                 i--;
             }
-            a[i+1] = key;//这里导论上写成 a[i+1]=key,但其实效果是一样的------->事实证明,这个说法是错误的,因为,这样写有个bug,若KEY 不是最小,就会发现,比如 45789 6,当前key是6,而a[0]=6,645789 显然不符合逻辑,应该是456789
+            a[i + 1] = key;//这里导论上写成 a[i+1]=key,但其实效果是一样的------->事实证明,这个说法是错误的,因为,这样写有个bug,若KEY 不是最小,就会发现,比如 45789 6,当前key是6,而a[0]=6,645789 显然不符合逻辑,应该是456789
             //我刚刚改过来,这个地方是一个
         }
         return a;
     }
 
 
+    public static int[] heapSort(int a[]) {
+        int length;
+        if ((length = a.length) < 1) {
+            return a;
+        }
+        a=buildMaxHeap(a);
+        for (int i = length - 1; i > 0; i--) {
+            exchange(a,0,i);
+            a=maxHeap(a,0);
+        }
+        return a;
+    }
 
+    /**
+     * build a max heap
+     * @param a
+     * @return
+     */
+    public static int[] buildMaxHeap(int a[]) {
+
+        int length;
+        if ((length = a.length) < 1) {
+            return a;
+        }
+        for (int i = length / 2; i >= 0; i--) {
+            a = maxHeap(a, i);
+        }
+        return a;
+    }
+
+    /**
+     * Recursion to cause a max
+     * @param a
+     * @param i
+     * @return
+     */
+    public static int[] maxHeap(int a[], int i) {
+        int left = 2 * i + 1;
+        int right = 2 * i + 2;
+        if (left >= a.length || right >= a.length) {
+            return a;
+        }
+        int large;
+        if (a[i] < a[left]) {
+            large = left;
+        } else large = i;
+        if (a[large] < a[right]) {
+            large = right;
+        }
+        if (large != i) {
+            a = exchange(a, i, large);
+            return maxHeap(a, large);
+        } else return a;
+    }
+
+    public static int[] exchange(int A[], int a, int b) {
+        int temp = A[a];
+        A[a] = A[b];
+        A[b] = temp;
+        return A;
+    }
 
 }
