@@ -18,6 +18,7 @@ public class FastSort {
         Print.print(a);
     }
 
+
     public static void fastSort(int a[], int left, int right) {
         int i = left;
         int j = right;
@@ -45,6 +46,8 @@ public class FastSort {
         if (j > left) {
             fastSort(a, left, j-1);
         }
+
+
     }
 
 
