@@ -1,7 +1,7 @@
 /**
  * author : Jerry
  **/
-package algorithm.sort.Tasks;
+package algorithm.Tasks;
 
 /**
  * Created by sooglejay on 16/8/1.

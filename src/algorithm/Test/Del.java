@@ -1,7 +1,7 @@
 /**
  * author : Jerry
  **/
-package algorithm.sort.Test;
+package algorithm.Test;
 
 /**
  * Created by sooglejay on 16/8/2.
