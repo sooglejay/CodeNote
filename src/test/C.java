@@ -23,7 +23,7 @@ public class C {
 //            System.out.println(i);
 //        }
 //        al();
-//        System.out.print(t(9, 16));
+//        System.out.print(func(9, 16));
         al();
     }
 
@@ -115,7 +115,7 @@ public class C {
 
 
 //
-//    public static String t(int n, int radix) {
+//    public static String func(int n, int radix) {
 //        StringBuilder binary = new StringBuilder();
 //        for (int i = 1; i <= radix; i++) {
 //            int a = (radix - i);
@@ -127,7 +127,7 @@ public class C {
 //        return binary.toString();
 //    }
 //
-//    public static String t2(int n, int radix) {
+//    public static String mul(int n, int radix) {
 //        StringBuilder binary = new StringBuilder();
 //        int a = 7;
 //        System.out.print("result:" + ((a >> 1) & 1));

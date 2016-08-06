@@ -7,6 +7,7 @@ package algorithm.Tree;
  * Created by sooglejay on 16/8/5.
  */
 public class Node {
+
     public Node left;
     public Node right;
     public Node parent;

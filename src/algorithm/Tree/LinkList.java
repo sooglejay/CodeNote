@@ -3,6 +3,8 @@
  **/
 package algorithm.Tree;
 
+import java.text.NumberFormat;
+
 /**
  * Created by sooglejay on 16/8/5.
  */
@@ -33,6 +35,11 @@ public class LinkList {
         System.out.print("\n 删除后");
         delete(node1);
         treeWalk(T);
+
+        NumberFormat nf = NumberFormat.getInstance();
+        nf.setMinimumFractionDigits(40);
+        System.out.print("\n\n"+nf.format(Math.pow(95.123 ,2))+  "  \n"+Math.pow(95.123 ,12));
+
 
     }
 
@@ -127,6 +134,7 @@ public class LinkList {
             T = v;
             return;
         }
+        //替换操作是先整孩子,整完孩子的归属问题,再整双亲
         Node parent = u.parent;
         if (parent.left != null && u == parent.left) {
             u.parent.left = v;
